@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 To create memory-game-react-app, either fork and clone this project or start from scratch:
-`npx create-react-app memory-game-react-app`
+#`npx create-react-app memory-game-react-app`
 
 After running create-react-app, we'll have a new project folder. We should cd into our project folder before we do anything else!
 ### `cd memory-game-react-app`
