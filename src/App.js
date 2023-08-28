@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -7,6 +7,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
+          <img
+            src={require("./assets/cover.jpg")}
+            className="CardCover"
+            alt="logo"
+          />
           Hello World!
         </p>
         <a
