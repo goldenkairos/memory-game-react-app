@@ -10,6 +10,9 @@
     cursor: pointer;
 }
 
+.card:hover {
+    box-shadow: 2px 2px 4px 4px #b2b2b2;}
+
 .card-front-face {
     size:50%;
 

@@ -6,13 +6,17 @@ import cover from "../assets/cover.jpg";
 
 const Card = ({ card }) => {
 
-  return (
-    <div className="card">
+  const handleCardClick = () => {
+    console.log("click click")
+  };
 
+  return (
+    <div className="card" onClick={handleCardClick}>
       <div className="card-front-face">
         <img src={cover} alt="front-face"/>
       </div>
     </div>
+    
   );
 };
 
