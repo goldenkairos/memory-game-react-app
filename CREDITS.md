@@ -24,3 +24,6 @@ img src = ramen.jpg
 
 img src = ice_cream.jpg
 <a href="https://www.freepik.com/free-vector/happy-cute-ice-cream-cartoon-vector-illustration-food-ice-cream-concept-isolated-flat-cartoon-style_10244723.htm#&position=8&from_view=collections">Image by catalyststuff</a> on Freepik
+
+img src = front.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-kawaii-coloring-book-illustration_31773908.htm#&position=1&from_view=collections">Freepik</a>

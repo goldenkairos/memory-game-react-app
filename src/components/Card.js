@@ -8,6 +8,7 @@ const Card = ({ card }) => {
 
   const handleCardClick = () => {
     console.log("click click")
+    console.log(card.id)
   };
 
   return (
@@ -15,13 +16,17 @@ const Card = ({ card }) => {
       <div className="card-front-face">
         <img src={cover} alt="front-face"/>
       </div>
+      <div className="card-back-face">
+        <img src={card.src} alt="back-face"/>
+      </div>
     </div>
     
   );
 };
 
-//  Card.propTypes = {
-//   card: PropTypes.object.isRequired,
-// }; 
+ Card.propTypes = {
+  card: PropTypes.object.isRequired,
+}; 
 
 export default Card;
+
