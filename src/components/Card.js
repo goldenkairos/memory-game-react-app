@@ -2,21 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
 import cover from "../assets/cover.jpg";
-// import { useState } from "react";
+import { useState } from "react";
 
-const Card = ({ card }) => {
+const Card = ({ index, card }) => {
+const [isFlipped, setFlipped] = useState(false);
 
   const handleCardClick = () => {
-    console.log("click click")
-    console.log(card.id)
+    setFlipped(!isFlipped);
   };
 
+
+
   return (
-    <div className="card" onClick={handleCardClick}>
-      <div className="card-front-face">
+    <div className={`card ${isFlipped ? "flipped" : ""}`} onClick={handleCardClick}>
+      <div className="card-face front side">
         <img src={cover} alt="front-face"/>
       </div>
-      <div className="card-back-face">
+      <div className="card-face back side">
         <img src={card.src} alt="back-face"/>
       </div>
     </div>
