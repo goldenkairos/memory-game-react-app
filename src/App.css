@@ -14,10 +14,15 @@
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: center;
+  padding-top: 20px;
   padding: 2rem;
-  width: 360px;
-  height:360px;
+  width: 500px;
+  height:500px;
   background-color: rgb(214, 244, 231);
   border-radius: 10px;
   align-items: stretch;
+}
+.NewGame {
+  margin:10px;
+  padding:6px;
 }

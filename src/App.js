@@ -170,7 +170,7 @@ function App() {
           gain a point!
         </p>
       </header>
-      <button onClick={handlenewGameClick}> New Game</button>
+      <button className="NewGame" onClick={handlenewGameClick}> New Game</button>
       <div className="game-board">
         {cards.map((card, index) => (
           <Card key={index} card={card} />
