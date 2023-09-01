@@ -113,22 +113,23 @@ function App() {
     },
   ];
 
-  useEffect(() => {
-    shuffleCards(cardList);
-  }, []);
 
   //shuffle the selected cards and create pairs
-  const shuffleCards = (array) => {
-    const selectedCards = getRandomCards(array, 8);
+  const shuffleCards = () => {
+    const selectedCards = getRandomCards(cardList, 8);
 
     // Double the cards to create pairs
     const cardPairs = selectedCards.concat(selectedCards);
+
+    //update each card ID
+    for (let i = 0; i < cardPairs.length; i++) {
+    cardPairs[i].id = i;
+    };
 
     // Shuffle the pairs
     const shuffledPairs = shuffleArray(cardPairs);
 
     setCards(shuffledPairs);
-    console.log(cards);
   };
 
   //randomly picking number of cards out of the deck
@@ -149,9 +150,15 @@ function App() {
     return shuffledArray;
   };
 
+
   const handlenewGameClick = () => {
-    shuffleCards(cardList);
+    shuffleCards();
   };
+
+  useEffect(() => {
+    shuffleCards();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">
