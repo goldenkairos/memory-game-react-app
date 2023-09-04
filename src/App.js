@@ -150,6 +150,9 @@ function App() {
     return shuffledArray;
   };
 
+  const onCardClick = (index) => {
+    console.log("index here",index)
+  }
 
   const handlenewGameClick = () => {
     shuffleCards();
@@ -173,7 +176,7 @@ function App() {
       <button className="NewGame" onClick={handlenewGameClick}> New Game</button>
       <div className="game-board">
         {cards.map((card, index) => (
-          <Card key={index} card={card} />
+          <Card key={index} card={card} index={index} onClick={()=>onCardClick(index)}/>
         ))}
       </div>
       <h3>Match found:</h3>
