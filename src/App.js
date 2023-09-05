@@ -130,6 +130,7 @@ function App() {
     const shuffledPairs = shuffleArray(cardPairs);
 
     setCards(shuffledPairs);
+    console.log(cards);
   };
 
   //randomly picking number of cards out of the deck
@@ -151,11 +152,16 @@ function App() {
   };
 
   const onCardClick = (index) => {
-    console.log("index here",index)
+    console.log("before update",cards);
+    console.log("index here",index);
+    cards[index].flipped = !cards[index].flipped;
+    console.log("after update",cards);
+    
   }
 
   const handlenewGameClick = () => {
     shuffleCards();
+    // console.log(cards);
   };
 
   useEffect(() => {
@@ -176,7 +182,7 @@ function App() {
       <button className="NewGame" onClick={handlenewGameClick}> New Game</button>
       <div className="game-board">
         {cards.map((card, index) => (
-          <Card key={index} card={card} index={index} onClick={()=>onCardClick(index)}/>
+          <Card key={index} card={card} index={index} onClick={()=>onCardClick(index)} isFlipped={card.flipped}/>
         ))}
       </div>
       <h3>Match found:</h3>
