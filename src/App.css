@@ -1,8 +1,12 @@
+html {
+  background-color: rgb(240, 220, 255);
+}
+
 .App {
   text-align: center;
   display: grid;
   place-items: center;
-  background-color: rgb(234, 205, 255);
+  /* background-color: rgb(234, 205, 255); */
   /* position: absolute; */
 }
 
@@ -18,7 +22,7 @@
   padding: 2rem;
   width: 500px;
   height:500px;
-  background-color: rgb(214, 244, 231);
+  background-color: rgb(230, 255, 244);
   border-radius: 10px;
   align-items: stretch;
 }

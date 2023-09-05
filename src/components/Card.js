@@ -8,13 +8,10 @@ const Card = ({ card, index, onClick, isFlipped}) => {
   const [localIsFlipped, setLocalIsFlipped] = useState(isFlipped);
 
   const handleCardClick = (index) => {
-    // if (!isFlipped){ //uncomment this when we don't want user to flip this back
     setLocalIsFlipped(!localIsFlipped);
-    // console.log(isFlipped);
     onClick();
     console.log("state",card.flipped);
     console.log("name",card.cardName);
-  // } //uncomment this when we don't want user to flip this back
   };
 
   return (

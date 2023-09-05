@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [cards, setCards] = useState([]);
   const [openCards, setOpenCards] = useState([]);
+  const [matchedPairs, setMatchedPairs] = useState([]);
 
   const cardList = [
     {
@@ -114,7 +115,6 @@ function App() {
     },
   ];
 
-
   //shuffle the selected cards and create pairs
   const shuffleCards = () => {
     const selectedCards = getRandomCards(cardList, 8);
@@ -124,8 +124,8 @@ function App() {
 
     //update each card ID
     for (let i = 0; i < cardPairs.length; i++) {
-    cardPairs[i].id = i;
-    };
+      cardPairs[i].id = i;
+    }
 
     // Shuffle the pairs
     const shuffledPairs = shuffleArray(cardPairs);
@@ -153,47 +153,64 @@ function App() {
   };
 
   const onCardClick = (index) => {
-    console.log("before update",cards);
-    console.log("index here",index);
     //only allow onCardClick if card.flipped = false;
-    if (!cards[index].flipped){
-    // cards[index].flipped = !cards[index].flipped;
-       // Create a copy of the cards array with the updated card
-       const updatedCards = [...cards];
-       updatedCards[index] = { ...updatedCards[index], flipped: !updatedCards[index].flipped };
-       
-       setCards(updatedCards); // Set the updated cards as the new state
-    console.log("after update",cards);
-  }
-    
-    if (openCards.length ===1) {
+    if (!cards[index].flipped) {
+      // Create a copy of the cards array with the updated card
+      const updatedCards = [...cards];
+      updatedCards[index] = {
+        ...updatedCards[index],
+        flipped: !updatedCards[index].flipped,
+      };
+
+      setCards(updatedCards); // Set the updated cards as the new state
+      console.log("after update", cards);
+    }
+
+    if (openCards.length === 1) {
       console.log("inside onCardClick1");
-      setOpenCards((prev) => [...prev,index]);
+      setOpenCards((prev) => [...prev, index]);
     } else {
       console.log("inside onCardClick2");
       setOpenCards([index]);
     }
-  }
-
-  // checking if 2 current open cards are a match
-  const matchingPairs =() => {
-    //index of the first and second selected cards
-    const [firstSelection, secondSelection] = openCards;
-    if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
-      console.log("we got a match!")
-    } else {
-      const updatedCards = [...cards];
-      updatedCards[firstSelection] = { ...updatedCards[firstSelection], flipped: !updatedCards[firstSelection].flipped };
-      updatedCards[secondSelection] = { ...updatedCards[secondSelection], flipped: !updatedCards[secondSelection].flipped };       
-      setCards(updatedCards); // Set the updated cards as the new state
-    }
-
   };
 
+  // checking if 2 current open cards are a match
+  const matchingPairs = () => {
+    //index of the first and second selected cards
+    const [firstSelection, secondSelection] = openCards;
+
+    if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
+      console.log("we got a match!");
+      setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
+      setOpenCards([]);
+    } else {
+      const updatedCards = [...cards];
+      updatedCards[firstSelection] = {
+        ...updatedCards[firstSelection],
+        flipped: !updatedCards[firstSelection].flipped,
+      };
+      updatedCards[secondSelection] = {
+        ...updatedCards[secondSelection],
+        flipped: !updatedCards[secondSelection].flipped,
+      };
+      setCards(updatedCards); // Set the updated cards as the new state
+    }
+  };
+
+  const checkCompletion =() => {
+    console.log("length of matched pairs",Object.keys(matchedPairs).length);
+    console.log("length of cards",cards.length/2);
+    if (matchedPairs.length === cards.length/2 && Object.keys(matchedPairs).length  !==0) {
+      console.log("congrats!!!");
+    }
+  };
 
   const handlenewGameClick = () => {
+    setMatchedPairs({});
+    setOpenCards([]);
     shuffleCards();
-    // console.log(cards);
+    
   };
 
   useEffect(() => {
@@ -204,13 +221,17 @@ function App() {
     return () => {
       clearTimeout(timeout);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openCards]);
-
 
   useEffect(() => {
     shuffleCards();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    checkCompletion();
+  },[matchedPairs]);
 
   return (
     <div className="App">
@@ -222,10 +243,19 @@ function App() {
           gain a point!
         </p>
       </header>
-      <button className="NewGame" onClick={handlenewGameClick}> New Game</button>
+      <button className="NewGame" onClick={handlenewGameClick}>
+        {" "}
+        New Game
+      </button>
       <div className="game-board">
         {cards.map((card, index) => (
-          <Card key={index} card={card} index={index} onClick={()=>onCardClick(index)} isFlipped={card.flipped}/>
+          <Card
+            key={index}
+            card={card}
+            index={index}
+            onClick={() => onCardClick(index)}
+            isFlipped={card.flipped}
+          />
         ))}
       </div>
       <h3>Match found:</h3>
