@@ -12,8 +12,8 @@ const Card = ({ card, index, onClick, isFlipped}) => {
     setLocalIsFlipped(!localIsFlipped);
     // console.log(isFlipped);
     onClick();
-    console.log(card.flipped);
-    console.log(card.cardName);
+    console.log("state",card.flipped);
+    console.log("name",card.cardName);
   // } //uncomment this when we don't want user to flip this back
   };
 
