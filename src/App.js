@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [openCards, setOpenCards] = useState([]);
 
   const cardList = [
     {
@@ -154,15 +155,57 @@ function App() {
   const onCardClick = (index) => {
     console.log("before update",cards);
     console.log("index here",index);
-    cards[index].flipped = !cards[index].flipped;
+    //only allow onCardClick if card.flipped = false;
+    if (!cards[index].flipped){
+    // cards[index].flipped = !cards[index].flipped;
+       // Create a copy of the cards array with the updated card
+       const updatedCards = [...cards];
+       updatedCards[index] = { ...updatedCards[index], flipped: !updatedCards[index].flipped };
+       
+       setCards(updatedCards); // Set the updated cards as the new state
     console.log("after update",cards);
-    
   }
+    
+    if (openCards.length ===1) {
+      console.log("inside onCardClick1");
+      setOpenCards((prev) => [...prev,index]);
+    } else {
+      console.log("inside onCardClick2");
+      setOpenCards([index]);
+    }
+  }
+
+  // checking if 2 current open cards are a match
+  const matchingPairs =() => {
+    //index of the first and second selected cards
+    const [firstSelection, secondSelection] = openCards;
+    if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
+      console.log("we got a match!")
+    } else {
+      const updatedCards = [...cards];
+      updatedCards[firstSelection] = { ...updatedCards[firstSelection], flipped: !updatedCards[firstSelection].flipped };
+      updatedCards[secondSelection] = { ...updatedCards[secondSelection], flipped: !updatedCards[secondSelection].flipped };       
+      setCards(updatedCards); // Set the updated cards as the new state
+    }
+
+  };
+
 
   const handlenewGameClick = () => {
     shuffleCards();
     // console.log(cards);
   };
+
+  useEffect(() => {
+    let timeout = null;
+    if (openCards.length === 2) {
+      timeout = setTimeout(matchingPairs, 1000);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [openCards]);
+
 
   useEffect(() => {
     shuffleCards();
