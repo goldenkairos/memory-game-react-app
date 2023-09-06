@@ -6,108 +6,110 @@ function App() {
   const [cards, setCards] = useState([]);
   const [firstSelectedCard, setFirstSelectedCard] = useState(null);
   const [secondSelectedCard, setSecondSelectedCard] = useState(null);
+  const [matchedCards, setMatchedCards] = useState([]);
+  // const [cardsMatch, setCardsMatch] = useState(false);
 
   const cardList = [
     {
-      card: "burger",
+      cardName: "burger",
       src: require(`./assets/burger.jpg`),
       id: 1,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "frend fries",
+      cardName: "frend fries",
       src: require(`./assets/french fries.jpg`),
       id: 2,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "hotdog",
+      cardName: "hotdog",
       src: require(`./assets/hotdog.jpg`),
       id: 3,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "ice cream",
+      cardName: "ice cream",
       src: require(`./assets/ice_cream.jpg`),
       id: 4,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "pancakes",
+      cardName: "pancakes",
       src: require(`./assets/pancakes.jpg`),
       id: 5,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "veggies",
+      cardName: "veggies",
       src: require(`./assets/veggies.jpg`),
       id: 6,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "pizza",
+      cardName: "pizza",
       src: require(`./assets/pizza.jpg`),
       id: 7,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "ramen",
+      cardName: "ramen",
       src: require(`./assets/ramen.jpg`),
       id: 8,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "takoyaki",
+      cardName: "takoyaki",
       src: require(`./assets/takoyaki.jpg`),
       id: 9,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "onigiri",
+      cardName: "onigiri",
       src: require(`./assets/onigiri.jpg`),
       id: 10,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "smores",
+      cardName: "smores",
       src: require(`./assets/smores.jpg`),
       id: 11,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "breakfast",
+      cardName: "breakfast",
       src: require(`./assets/breakfast.jpg`),
       id: 12,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "boba",
+      cardName: "boba",
       src: require(`./assets/boba.jpg`),
       id: 13,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "donut",
+      cardName: "donut",
       src: require(`./assets/donut.jpg`),
       id: 14,
       matchFound: false,
       flipped: false,
     },
     {
-      card: "coffee_toast",
+      cardName: "coffee_toast",
       src: require(`./assets/coffee_toast.jpg`),
       id: 15,
       matchFound: false,
@@ -155,26 +157,117 @@ const getRandomCards = (array, count) => {
     return shuffledArray;
   };
 
-  const checkIsFlipped = (card) => {
-    //return true if one of these condition meets
+  // const checkIsFlipped = (card) => {
+  //   //return true if one of these condition meets
+  //   return (
+  //     matchedCards.includes(card) ||
+  //     card === firstSelectedCard ||
+  //     card === secondSelectedCard )
+  // };
+
+  const checkIsFlipped = (index) => {
     return (
-      card === firstSelectedCard ||
-      card === secondSelectedCard ||
-      card.matchFound
+      index === firstSelectedCard ||
+      index === secondSelectedCard ||
+      matchedCards.includes(index)
     );
   };
 
-  const onCardClick = (card) => {
-    console.log(cards);
-    firstSelectedCard
-      ? setFirstSelectedCard(card)
-      : setSecondSelectedCard(card);
-    console.log(card);
+  
+  // const onCardClick = (card) => {
+  //   console.log(cards);
+  //   firstSelectedCard
+  //     ? setSecondSelectedCard(card)
+  //     : setFirstSelectedCard(card);
+  // };
+
+  const onCardClick = (index) => {
+    if (matchedCards.includes(index)) {
+      // Ignore clicks on matched cards
+      return;
+    }
+  
+    if (index === firstSelectedCard) {
+      // Ignore the same card clicked twice
+      return;
+    }
+
+    if (firstSelectedCard === null) {
+      setFirstSelectedCard(index);
+    } else if (secondSelectedCard === null) {
+      setSecondSelectedCard(index);
+    }
   };
+
+  const resetCards = () => {
+    setFirstSelectedCard(null);
+    setSecondSelectedCard(null);
+
+  };
+
+  // const matchingProcess = () => {
+  //   if (firstSelectedCard && secondSelectedCard) {
+  //     if (firstSelectedCard.cardName === secondSelectedCard.cardName) {
+  //       const updatedCards = cards.map((card)=>{
+  //         if (card.cardName === firstSelectedCard.cardName) {
+  //           return {...card, matchFound: true}
+  //         }
+  //         return card;
+  //       })
+  //       setCards(updatedCards);
+  //       console.log("it's a match!");
+  //       resetCards();
+  //     }
+
+  //   } else {
+  //     setTimeout(() => resetCards(), 1000)
+  //   }
+  // }
 
   const handlenewGameClick = () => {
     shuffleCards();
+    setMatchedCards([]);
+    resetCards();
   };
+
+//   useEffect(() => {if (firstSelectedCard && secondSelectedCard) {
+//     if (firstSelectedCard.cardName === secondSelectedCard.cardName) {
+//       console.log("it's a match!");
+//       setMatchedPairs((prev) => ([...prev,cards[firstSelectedCard].cardName]));
+//       const updatedCards = cards.map((card)=>{
+//         if (card.cardName === firstSelectedCard.cardName) {
+//           return {...card, matchFound: true}
+//         }
+//         return card;
+//       })
+//       setCards(updatedCards);
+//       resetCards();
+//     }
+//   } else {
+//     setTimeout(() => resetCards(), 1000)
+//   }
+// }, [firstSelectedCard, secondSelectedCard]);
+
+useEffect(() => {
+  if (firstSelectedCard !== null && secondSelectedCard !== null) {
+    if (cards[firstSelectedCard].cardName === cards[secondSelectedCard].cardName) {
+      console.log("it's a match!");
+      setMatchedCards((prev) => [...prev, cards[firstSelectedCard].cardName]);
+
+      // Add the matched cards to the matchedCards state
+      setMatchedCards((prev) => [...prev, firstSelectedCard, secondSelectedCard]);
+    } else {
+      console.log("No match, flipping cards back...");
+      setTimeout(() => {
+        // Flip the cards back to their initial state
+        setFirstSelectedCard(null);
+        setSecondSelectedCard(null);
+      }, 1000);
+    }
+  }
+}, [firstSelectedCard, secondSelectedCard, cards]);
+
+
 
   useEffect(() => {
     shuffleCards();
@@ -200,7 +293,7 @@ const getRandomCards = (array, count) => {
           <Card
             key={index}
             card={card}
-            isFlipped={checkIsFlipped(card)}
+            isFlipped={checkIsFlipped(index)}
             onClick={onCardClick}
           />
         ))}

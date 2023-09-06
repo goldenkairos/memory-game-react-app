@@ -5,18 +5,19 @@ import cover from "../assets/cover.jpg";
 import { useState } from "react";
 
 const Card = ({ index, card, isFlipped, onClick }) => {
-  // const [isFlipped, setFlipped] = useState(false);
+  const [localIsFlipped, setFlipped] = useState(false);
 
   const handleCardClick = () => {
     // if (!isFlipped) {
     //   setFlipped(true);
     // }
-    onClick(card);
+    setFlipped(!localIsFlipped);
+    onClick(index);
   };
 
   return (
     <div
-      className={`card ${isFlipped ? "flipped" : ""}`}
+      className={`card ${localIsFlipped ? "flipped" : ""}`}
       onClick={handleCardClick}
     >
       <div className="card-face front">
