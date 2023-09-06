@@ -1,7 +1,7 @@
 import confetti from 'canvas-confetti'
 
 const launchConfetti = () => {
-  var defaults = {
+  let defaults = {
     spread: 360,
     ticks: 50,
     gravity: 0,
