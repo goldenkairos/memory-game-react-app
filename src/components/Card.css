@@ -10,9 +10,9 @@
     cursor: pointer;
     border-color: transparent;
     place-items: center;
-    /* &.card-back{
+    &.card-back{
         transform: rotateY(180deg);  
-      }*/
+      }
 }
 
 .card:hover {
@@ -57,7 +57,7 @@ img {
   transform: rotateY(180deg);
 }
 
-.card .flipped .card-face.front {
+.card.flipped .card-face.front {
   transform: rotateY(180deg);
 }
 

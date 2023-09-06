@@ -7,12 +7,11 @@ import { useState } from "react";
 const Card = ({ index, card, isFlipped, onClick }) => {
   // const [isFlipped, setFlipped] = useState(false);
 
-  const handleCardClick = (index) => {
+  const handleCardClick = () => {
     // if (!isFlipped) {
     //   setFlipped(true);
     // }
     onClick(card);
-    console.log(isFlipped);
   };
 
   return (

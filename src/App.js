@@ -115,6 +115,12 @@ function App() {
     },
   ];
 
+//randomly picking number of cards out of the deck
+const getRandomCards = (array, count) => {
+      const shuffledArray = shuffleArray(array);
+      return shuffledArray.slice(0, count);
+};
+
   //shuffle the selected cards and create pairs
   const shuffleCards = () => {
     const selectedCards = getRandomCards(cardList, 8);
@@ -123,23 +129,21 @@ function App() {
     const cardPairs = selectedCards.concat(selectedCards);
 
     //update each card ID
-    for (let i = 0; i < cardPairs.length; i++) {
-      cardPairs[i].id = i;
-    }
+      let i = 0;
+      const updatedCardPairs = cardPairs.map((card) => ({
+        ...card,
+        id: i+=1
+      }))
+    console.log("cardPairs", cardPairs);
 
     // Shuffle the pairs
-    const shuffledPairs = shuffleArray(cardPairs);
-
+    const shuffledPairs = shuffleArray(updatedCardPairs);
+    console.log("shuffledPairs", shuffledPairs);
     setCards(shuffledPairs);
   };
 
-  //randomly picking number of cards out of the deck
-  const getRandomCards = (array, count) => {
-    const shuffledArray = shuffleArray(array);
-    return shuffledArray.slice(0, count);
-  };
-
   const shuffleArray = (array) => {
+    console.log("array in shuffleArray", array);
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -161,8 +165,12 @@ function App() {
   };
 
   const onCardClick = (card) => {
-    firstSelectedCard ? setFirstSelectedCard(card) : setSecondSelectedCard(card);
-  }
+    console.log(cards);
+    firstSelectedCard
+      ? setFirstSelectedCard(card)
+      : setSecondSelectedCard(card);
+    console.log(card);
+  };
 
   const handlenewGameClick = () => {
     shuffleCards();
@@ -189,11 +197,11 @@ function App() {
       </button>
       <div className="game-board">
         {cards.map((card, index) => (
-          <Card 
-          key={index} 
-          card={card} 
-          isFlipped={checkIsFlipped(card)}
-          onClick = {onCardClick}
+          <Card
+            key={index}
+            card={card}
+            isFlipped={checkIsFlipped(card)}
+            onClick={onCardClick}
           />
         ))}
       </div>
