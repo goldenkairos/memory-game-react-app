@@ -1,11 +1,15 @@
+// import { useDebounce } from "use-debounce";
 import "./App.css";
 import Card from "./components/Card.js";
+import launchConfetti from "./components/Confetti";
 import React, { useState, useEffect } from "react";
 
 function App() {
   const [cards, setCards] = useState([]);
   const [openCards, setOpenCards] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
+  const [isDisabled, setDisabledCard] = useState(false);
+  const [isMatching, setIsMatching] = useState(false);
 
   const cardList = [
     {
@@ -115,6 +119,16 @@ function App() {
     },
   ];
 
+  //set card to enable flipping
+  const enable = () => {
+    setDisabledCard(false);
+  };
+
+  //set card to disable flipping
+  const disable = () => {
+    setDisabledCard(true);
+  };
+
   //shuffle the selected cards and create pairs
   const shuffleCards = () => {
     const selectedCards = getRandomCards(cardList, 8);
@@ -153,8 +167,13 @@ function App() {
   };
 
   const onCardClick = (index) => {
+
+    if (matchedPairs.includes(cards[index].cardName) || openCards.includes(index)){
+      return;
+    };
+    
     //only allow onCardClick if card.flipped = false;
-    if (!cards[index].flipped) {
+    if (!cards[index].flipped && !isDisabled && !isMatching) {
       // Create a copy of the cards array with the updated card
       const updatedCards = [...cards];
       updatedCards[index] = {
@@ -167,42 +186,52 @@ function App() {
     }
 
     if (openCards.length === 1) {
-      console.log("inside onCardClick1");
       setOpenCards((prev) => [...prev, index]);
+      disable();
+      setIsMatching(true);
     } else {
-      console.log("inside onCardClick2");
       setOpenCards([index]);
     }
   };
 
   // checking if 2 current open cards are a match
   const matchingPairs = () => {
+    setIsMatching(true);
+    
     //index of the first and second selected cards
     const [firstSelection, secondSelection] = openCards;
+    // enable();
+
 
     if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
       console.log("we got a match!");
       setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
       setOpenCards([]);
+      setIsMatching(false);
     } else {
-      const updatedCards = [...cards];
-      updatedCards[firstSelection] = {
-        ...updatedCards[firstSelection],
-        flipped: !updatedCards[firstSelection].flipped,
+      setTimeout(()=> {
+        const updatedCards = [...cards];
+        updatedCards[firstSelection] = {
+          ...updatedCards[firstSelection],
+          flipped: !updatedCards[firstSelection].flipped,
       };
       updatedCards[secondSelection] = {
         ...updatedCards[secondSelection],
         flipped: !updatedCards[secondSelection].flipped,
       };
       setCards(updatedCards); // Set the updated cards as the new state
-    }
+      
+      enable();
+    }, 500);
+  }
+  setIsMatching(false);
   };
 
   const checkCompletion =() => {
     console.log("length of matched pairs",Object.keys(matchedPairs).length);
-    console.log("length of cards",cards.length/2);
     if (matchedPairs.length === cards.length/2 && Object.keys(matchedPairs).length  !==0) {
       console.log("congrats!!!");
+      launchConfetti();
     }
   };
 
@@ -210,13 +239,12 @@ function App() {
     setMatchedPairs({});
     setOpenCards([]);
     shuffleCards();
-    
   };
 
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
-      timeout = setTimeout(matchingPairs, 1000);
+      timeout = setTimeout(matchingPairs, 400);
     }
     return () => {
       clearTimeout(timeout);
@@ -231,6 +259,7 @@ function App() {
 
   useEffect(() => {
     checkCompletion();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[matchedPairs]);
 
   return (
@@ -238,9 +267,7 @@ function App() {
       <header>
         <h2>Hello World! Welcome to Memory Game</h2>
         <p>
-          On the game board, there are always two identical cards. <br />
-          When finding the matching pair, the cards will disappear, and you will
-          gain a point!
+          Find the matching pair!
         </p>
       </header>
       <button className="NewGame" onClick={handlenewGameClick}>
@@ -255,6 +282,7 @@ function App() {
             index={index}
             onClick={() => onCardClick(index)}
             isFlipped={card.flipped}
+            isDisable={isDisabled}
           />
         ))}
       </div>
