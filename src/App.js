@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [firstSelectedCard, setFirstSelectedCard] = useState(null);
+  const [secondSelectedCard, setSecondSelectedCard] = useState(null);
 
   const cardList = [
     {
@@ -113,7 +115,6 @@ function App() {
     },
   ];
 
-
   //shuffle the selected cards and create pairs
   const shuffleCards = () => {
     const selectedCards = getRandomCards(cardList, 8);
@@ -123,8 +124,8 @@ function App() {
 
     //update each card ID
     for (let i = 0; i < cardPairs.length; i++) {
-    cardPairs[i].id = i;
-    };
+      cardPairs[i].id = i;
+    }
 
     // Shuffle the pairs
     const shuffledPairs = shuffleArray(cardPairs);
@@ -150,6 +151,18 @@ function App() {
     return shuffledArray;
   };
 
+  const checkIsFlipped = (card) => {
+    //return true if one of these condition meets
+    return (
+      card === firstSelectedCard ||
+      card === secondSelectedCard ||
+      card.matchFound
+    );
+  };
+
+  const onCardClick = (card) => {
+    firstSelectedCard ? setFirstSelectedCard(card) : setSecondSelectedCard(card);
+  }
 
   const handlenewGameClick = () => {
     shuffleCards();
@@ -157,7 +170,7 @@ function App() {
 
   useEffect(() => {
     shuffleCards();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -170,10 +183,18 @@ function App() {
           gain a point!
         </p>
       </header>
-      <button className="NewGame" onClick={handlenewGameClick}> New Game</button>
+      <button className="NewGame" onClick={handlenewGameClick}>
+        {" "}
+        New Game
+      </button>
       <div className="game-board">
         {cards.map((card, index) => (
-          <Card key={index} card={card} />
+          <Card 
+          key={index} 
+          card={card} 
+          isFlipped={checkIsFlipped(card)}
+          onClick = {onCardClick}
+          />
         ))}
       </div>
       <h3>Match found:</h3>

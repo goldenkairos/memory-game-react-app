@@ -57,7 +57,7 @@ img {
   transform: rotateY(180deg);
 }
 
-.card.flipped .card-face.front {
+.card .flipped .card-face.front {
   transform: rotateY(180deg);
 }
 
