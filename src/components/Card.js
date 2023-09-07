@@ -2,21 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
 import cover from "../assets/cover.jpg";
-import { useState } from "react";
+// import { useState } from "react";
 
-const Card = ({ card, index, onClick, isFlipped}) => {
-  const [localIsFlipped, setLocalIsFlipped] = useState(isFlipped);
+const Card = ({ card, index, onClick, isFlipped, flipped, handleCardSlection}) => {
+  // const [localIsFlipped, setLocalIsFlipped] = useState(isFlipped);
 
-  const handleCardClick = (index) => {
-    setLocalIsFlipped(!localIsFlipped);
-    onClick();
-    console.log("state",card.flipped);
-    console.log("name",card.cardName);
+  const handleCardClick = () => {
+    // setLocalIsFlipped(!localIsFlipped);
+    // onClick();
+    // console.log("state",card.flipped);
+    // console.log("name",card.cardName);
+    handleCardSlection(index);
   };
 
   return (
     <div
-      className={`card${card.flipped ? " flipped" : ""}`}
+      // className={`card${card.flipped ? " flipped" : ""}`}
+      className={`card${flipped ? " flipped" : ""} ${card.matchFound ? "inactive" : "active"}`}
       onClick={handleCardClick}
     >
       <div className="card-face front">

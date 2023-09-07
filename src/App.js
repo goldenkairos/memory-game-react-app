@@ -6,6 +6,8 @@ function App() {
   const [cards, setCards] = useState([]);
   const [openCards, setOpenCards] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
+  const [firstSelection, setFirstSelection] = useState(null);
+  const [secondSelection, setSecondSelection] = useState(null);
 
   const cardList = [
     {
@@ -152,49 +154,90 @@ function App() {
     return shuffledArray;
   };
 
-  const onCardClick = (index) => {
-    //only allow onCardClick if card.flipped = false;
-    if (!cards[index].flipped) {
-      // Create a copy of the cards array with the updated card
-      const updatedCards = [...cards];
-      updatedCards[index] = {
-        ...updatedCards[index],
-        flipped: !updatedCards[index].flipped,
-      };
-
-      setCards(updatedCards); // Set the updated cards as the new state
-      console.log("after update", cards);
-    }
-
-    if (openCards.length === 1) {
-      console.log("inside onCardClick1");
-      setOpenCards((prev) => [...prev, index]);
-    } else {
-      console.log("inside onCardClick2");
-      setOpenCards([index]);
-    }
+  const checkIsFlipped = (index) => {
+    return index === firstSelection || 
+    index === secondSelection || 
+    openCards.includes(cards[index]) ||
+    cards[index].matchFound;
   };
 
-  // checking if 2 current open cards are a match
-  const matchingPairs = () => {
-    //index of the first and second selected cards
-    const [firstSelection, secondSelection] = openCards;
+  const handleCardSlection = (index) => {
+    // if (openCards.length <2) {
+    if (firstSelection === null && openCards.length===0) {
+      setFirstSelection(index);
+      setOpenCards(([index]))
+    } else if (secondSelection === null && !openCards.includes(index)) {
+      setSecondSelection(index);
+      setOpenCards((prevArray)=>[...prevArray,index]);
+    };
+  // } else {return;}
+  };
+console.log(openCards);
+console.log(cards);
+  // const onCardClick = (index) => {
+
+  //   //only allow onCardClick if card.flipped = false;
+  //   if (!cards[index].flipped) {
+  //     // Create a copy of the cards array with the updated card
+  //     const updatedCards = [...cards];
+  //     updatedCards[index] = {
+  //       ...updatedCards[index],
+  //       flipped: !updatedCards[index].flipped,
+  //     };
+
+  //     setCards(updatedCards); // Set the updated cards as the new state
+  //     console.log("after update", cards);
+  //   }
+
+  //   if (openCards.length === 1) {
+  //     console.log("inside onCardClick1");
+  //     setOpenCards((prev) => [...prev, index]);
+  //   } else {
+  //     console.log("inside onCardClick2");
+  //     setOpenCards([index]);
+  //   }
+  // };
+
+  // // checking if 2 current open cards are a match
+  // const matchingPairs = () => {
+  //   //index of the first and second selected cards
+  //   const [firstSelection, secondSelection] = openCards;
+
+  //   if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
+  //     console.log("we got a match!");
+  //     setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
+  //     setOpenCards([]);
+  //   } else {
+  //     const updatedCards = [...cards];
+  //     updatedCards[firstSelection] = {
+  //       ...updatedCards[firstSelection],
+  //       flipped: !updatedCards[firstSelection].flipped,
+  //     };
+  //     updatedCards[secondSelection] = {
+  //       ...updatedCards[secondSelection],
+  //       flipped: !updatedCards[secondSelection].flipped,
+  //     };
+  //     setCards(updatedCards); // Set the updated cards as the new state
+  //   }
+  // };
+ const resetCards =()=>{
+  setOpenCards([]);
+  setFirstSelection(null);
+  setSecondSelection(null);
+ };
+
+  const matchingProcess =() => {
+    setOpenCards([firstSelection, secondSelection]);
 
     if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
       console.log("we got a match!");
       setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
-      setOpenCards([]);
+      resetCards();
     } else {
-      const updatedCards = [...cards];
-      updatedCards[firstSelection] = {
-        ...updatedCards[firstSelection],
-        flipped: !updatedCards[firstSelection].flipped,
-      };
-      updatedCards[secondSelection] = {
-        ...updatedCards[secondSelection],
-        flipped: !updatedCards[secondSelection].flipped,
-      };
-      setCards(updatedCards); // Set the updated cards as the new state
+      // setOpenCards([]);
+      // setFirstSelection(null);
+      // setSecondSelection(null);
+      setTimeout(resetCards(),1000);
     }
   };
 
@@ -206,9 +249,11 @@ function App() {
     }
   };
 
+
   const handlenewGameClick = () => {
-    setMatchedPairs({});
-    setOpenCards([]);
+    resetCards();
+    setMatchedPairs([]);
+    // setOpenCards([]);
     shuffleCards();
     
   };
@@ -216,7 +261,8 @@ function App() {
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
-      timeout = setTimeout(matchingPairs, 1000);
+      // timeout = setTimeout(matchingPairs, 1000);
+      timeout = setTimeout(matchingProcess, 1000);
     }
     return () => {
       clearTimeout(timeout);
@@ -231,6 +277,7 @@ function App() {
 
   useEffect(() => {
     checkCompletion();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[matchedPairs]);
 
   return (
@@ -253,8 +300,10 @@ function App() {
             key={index}
             card={card}
             index={index}
-            onClick={() => onCardClick(index)}
+            // onClick={() => onCardClick(index)}
             isFlipped={card.flipped}
+            flipped={checkIsFlipped(index)}
+            handleCardSlection={handleCardSlection}
           />
         ))}
       </div>
