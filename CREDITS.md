@@ -1,3 +1,4 @@
+confetti : https://www.kirilv.com/canvas-confetti/
 img src = cover.jpg
 <a href="https://www.freepik.com/free-vector/cute-shiba-inu-dog-eating-sushi-cartoon_11766628.htm#&position=0&from_view=collections">Image by catalyststuff</a> on Freepik
 

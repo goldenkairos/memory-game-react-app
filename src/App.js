@@ -1,6 +1,7 @@
 import "./App.css";
 import Card from "./components/Card.js";
 import React, { useState, useEffect } from "react";
+import launchConfetti from "./components/Confetti";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -124,18 +125,19 @@ function App() {
     // Double the cards to create pairs
     const cardPairs = selectedCards.concat(selectedCards);
 
-    //update each card ID
-    for (let i = 0; i < cardPairs.length; i++) {
-      cardPairs[i].id = i;
-    }
+      let i = 0;
+      const updatedCardPairs = cardPairs.map((card) => ({
+        ...card,
+        id: i+=1
+      }))
 
     // Shuffle the pairs
-    const shuffledPairs = shuffleArray(cardPairs);
+    const shuffledPairs = shuffleArray(updatedCardPairs);
 
     setCards(shuffledPairs);
     console.log(cards);
   };
-
+console.log(cards);
   //randomly picking number of cards out of the deck
   const getRandomCards = (array, count) => {
     const shuffledArray = shuffleArray(array);
@@ -162,7 +164,6 @@ function App() {
   };
 
   const handleCardSlection = (index) => {
-    // if (openCards.length <2) {
     if (firstSelection === null && openCards.length===0) {
       setFirstSelection(index);
       setOpenCards(([index]))
@@ -170,56 +171,8 @@ function App() {
       setSecondSelection(index);
       setOpenCards((prevArray)=>[...prevArray,index]);
     };
-  // } else {return;}
   };
-console.log(openCards);
-console.log(cards);
-  // const onCardClick = (index) => {
 
-  //   //only allow onCardClick if card.flipped = false;
-  //   if (!cards[index].flipped) {
-  //     // Create a copy of the cards array with the updated card
-  //     const updatedCards = [...cards];
-  //     updatedCards[index] = {
-  //       ...updatedCards[index],
-  //       flipped: !updatedCards[index].flipped,
-  //     };
-
-  //     setCards(updatedCards); // Set the updated cards as the new state
-  //     console.log("after update", cards);
-  //   }
-
-  //   if (openCards.length === 1) {
-  //     console.log("inside onCardClick1");
-  //     setOpenCards((prev) => [...prev, index]);
-  //   } else {
-  //     console.log("inside onCardClick2");
-  //     setOpenCards([index]);
-  //   }
-  // };
-
-  // // checking if 2 current open cards are a match
-  // const matchingPairs = () => {
-  //   //index of the first and second selected cards
-  //   const [firstSelection, secondSelection] = openCards;
-
-  //   if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
-  //     console.log("we got a match!");
-  //     setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
-  //     setOpenCards([]);
-  //   } else {
-  //     const updatedCards = [...cards];
-  //     updatedCards[firstSelection] = {
-  //       ...updatedCards[firstSelection],
-  //       flipped: !updatedCards[firstSelection].flipped,
-  //     };
-  //     updatedCards[secondSelection] = {
-  //       ...updatedCards[secondSelection],
-  //       flipped: !updatedCards[secondSelection].flipped,
-  //     };
-  //     setCards(updatedCards); // Set the updated cards as the new state
-  //   }
-  // };
  const resetCards =()=>{
   setOpenCards([]);
   setFirstSelection(null);
@@ -249,7 +202,7 @@ console.log(cards);
       // setOpenCards([]);
       // setFirstSelection(null);
       // setSecondSelection(null);
-      setTimeout(resetCards(),1000);
+      setTimeout(()=>resetCards(),500);
     }
   };
 console.log(matchedPairs);
@@ -259,6 +212,7 @@ console.log(matchedPairs);
     console.log("length of cards",cards.length/2);
     if (matchedPairs.length === cards.length/2 && Object.keys(matchedPairs).length  !==0) {
       console.log("congrats!!!");
+      launchConfetti();
     }
   };
 
@@ -311,7 +265,7 @@ console.log(matchedPairs);
             card={card}
             index={index}
             // onClick={() => onCardClick(index)}
-            isFlipped={card.flipped}
+            // isFlipped={card.flipped}
             flipped={checkIsFlipped(index)}
             handleCardSlection={handleCardSlection}
           />

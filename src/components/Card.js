@@ -4,7 +4,7 @@ import "./Card.css";
 import cover from "../assets/cover.jpg";
 // import { useState } from "react";
 
-const Card = ({ card, index, onClick, isFlipped, flipped, handleCardSlection}) => {
+const Card = ({ card, index, flipped, handleCardSlection}) => {
   // const [localIsFlipped, setLocalIsFlipped] = useState(isFlipped);
 
   const handleCardClick = () => {
