@@ -163,7 +163,7 @@ function App() {
       matchFound: false,
       flipped: false,
     },
-        {
+    {
       cardName: "sushi2",
       src: require(`./assets/sushi2.jpg`),
       id: 20,
@@ -261,12 +261,12 @@ function App() {
   };
 
   const matchingProcess = () => {
-    if (!firstSelection && !secondSelection){
+    if (!firstSelection && !secondSelection) {
       return;
     }
     setOpenCards([firstSelection, secondSelection]);
-    console.log("firstSelection",firstSelection);
-    console.log("secondSelection",secondSelection);
+    console.log("firstSelection", firstSelection);
+    console.log("secondSelection", secondSelection);
     if (
       cards[firstSelection].cardName === cards[secondSelection].cardName &&
       !matchedPairs.includes(cards[firstSelection])
@@ -281,7 +281,7 @@ function App() {
       setTimeout(() => resetCards(), 500);
     }
   };
-console.log(matchedPairs);
+  console.log(matchedPairs);
 
   const checkCompletion = () => {
     if (
@@ -327,10 +327,28 @@ console.log(matchedPairs);
   return (
     <div className="App">
       <header>
-        <h1>Welcome to Memory Game</h1>
-        <h2>
-          Cute Food Edition 
-        </h2> 
+        <h1 className="welcome">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            height="100"
+            viewBox="0 0 600 100"
+            textAnchor="middle" 
+            alignmentBaseline="middle"
+            // className="svgTitle"
+          >
+            <text
+              className="svgText"
+              x="50%"
+              y="50%"
+              font-size="4vw"
+              font-weight="bold"
+              fill="white"
+            >
+              NomNom Matchup
+            </text>
+          </svg>
+        </h1>
       </header>
       <div className="game-board">
         {cards.map((card, index) => (
@@ -347,18 +365,17 @@ console.log(matchedPairs);
       </div>
       <footer>
         <div className="scores">
-          <span className="matches">Match found:{matchedPairs.length}</span>
-          <span className="moves">Total Moves:{moves}</span>
-          <span>Best Score:</span> {bestScore && (
-            <div className="highest-score">
-               {bestScore}
-            </div>
-          )}
-          <div>       
-          <button className="new-game-button" onClick={handlenewGameClick}>    
-        New Game
-        <BiPlayCircle size={20}/>
-      </button></div>
+          <span className="matches">Match found: {matchedPairs.length}</span>
+          <span className="moves">Total Moves: {moves}</span>
+          <span className="highest-score">
+            Best Score: {bestScore && { bestScore }}
+          </span>
+        </div>
+        <div>
+          <button className="new-game-button" onClick={handlenewGameClick}>
+            New Game
+            <BiPlayCircle size={30} />
+          </button>
         </div>
       </footer>
     </div>
