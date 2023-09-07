@@ -226,12 +226,24 @@ console.log(cards);
   setSecondSelection(null);
  };
 
+ const markCardsAsMatched = (firstSelection, secondSelection) => {
+  setCards((prevCards) =>
+    prevCards.map((card, index) => {
+      if (index === firstSelection || index === secondSelection) {
+        return { ...card, matchFound: true };
+      }
+      return card;
+    })
+  );
+};
+
   const matchingProcess =() => {
     setOpenCards([firstSelection, secondSelection]);
 
-    if (cards[firstSelection].cardName === cards[secondSelection].cardName) {
+    if (cards[firstSelection].cardName === cards[secondSelection].cardName && !matchedPairs.includes(cards[firstSelection].cardName)) {
       console.log("we got a match!");
       setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
+      markCardsAsMatched(firstSelection,secondSelection);
       resetCards();
     } else {
       // setOpenCards([]);
@@ -240,6 +252,7 @@ console.log(cards);
       setTimeout(resetCards(),1000);
     }
   };
+console.log(matchedPairs);
 
   const checkCompletion =() => {
     console.log("length of matched pairs",Object.keys(matchedPairs).length);
@@ -249,13 +262,10 @@ console.log(cards);
     }
   };
 
-
   const handlenewGameClick = () => {
     resetCards();
     setMatchedPairs([]);
-    // setOpenCards([]);
-    shuffleCards();
-    
+    shuffleCards();   
   };
 
   useEffect(() => {
