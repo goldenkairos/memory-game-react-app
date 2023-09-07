@@ -8,6 +8,7 @@ html {
   place-items: center;
   /* background-color: rgb(234, 205, 255); */
   /* position: absolute; */
+  font-family:Nunito,Arial,"Helvetica Neue",Helvetica,sans-serif ;
 }
 
 .game-board {
@@ -26,7 +27,45 @@ html {
   border-radius: 10px;
   align-items: stretch;
 }
-.NewGame {
-  margin:10px;
-  padding:6px;
+.new-game-button {
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  font-size: 1.3em;
+  font-weight: 800;
+  cursor: pointer;
+  transform: perspective(1px) translateZ(0px);
+  transition-duration: 0.2s;
+  background-color: rgb(104, 66, 255);
+  -webkit-box-align: center;
+  align-items: center;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 80px;
+  padding: 14px 30px;
+  gap: 5px;
+  border: transparent;
+  
+}
+
+.score {
+  align-items: center;
+  padding-top:25px;
+  display: flexbox;
+  justify-content: space-around;
+  flex-direction: row;
+  
+}
+
+.moves {
+  font-weight: 600;
+  text-transform: uppercase;
+  
+}
+
+.matches {
+  font-weight: 600;
+  text-transform: uppercase;
+  /* padding-right: 30px; */
 }

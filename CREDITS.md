@@ -46,3 +46,28 @@ img src = donut.jpg
 
 img src = boba.jpg
 <a href="https://www.freepik.com/free-vector/cute-shiba-inu-milk-tea-boba-cartoon_11919403.htm#query=cute%20boba&position=4&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src = sushi.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-flat-design-japan-food-illustration_23441873.htm#query=chibi%20food&position=8&from_view=search&track=ais">Freepik</a>
+
+img src = tempura.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-flat-design-japan-food-illustration_23441870.htm#query=chibi%20food&position=24&from_view=search&track=ais">Freepik</a>
+
+img src = bento.jpg
+<a href="https://www.freepik.com/free-vector/hand-drawn-kawaii-food-illustration_26237700.htm#query=bento&position=13&from_view=search&track=sph">Image by pikisuperstar</a> on Freepik
+
+img src = gyoza.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-flat-design-kawaii-illustration_25758838.htm#query=cute%20gyoza&position=22&from_view=search&track=ais">Freepik</a>
+
+img src = burrito.jpg
+<a href="https://www.freepik.com/free-vector/kawaii-fast-food-cute-burrito-sauces-illustration_5769151.htm#&position=14&from_view=collections">Image by gstudioimagen</a> on Freepik
+
+img src=sushi.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-kawaii-sushi-collection_4097572.htm#&position=17&from_view=collections">Freepik</a>
+
+
+img src=salsa.jpg
+<a href="https://www.freepik.com/free-vector/cute-nachos-wearing-hat-holding-chili-sauce-cartoon-vector-icon-illustration-food-holiday-icon_48783230.htm#query=chibi%20taco&position=19&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=taco.jpg
+<a href="https://www.freepik.com/free-vector/cute-puppy-with-tacos-vector-illustration_18166187.htm#query=chibi%20taco&position=8&from_view=search&track=ais">Image by maniacvector</a> on Freepik

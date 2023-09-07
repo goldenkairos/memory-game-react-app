@@ -1,7 +1,8 @@
 import "./App.css";
 import Card from "./components/Card.js";
 import React, { useState, useEffect } from "react";
-import launchConfetti from "./components/Confetti";
+import launchConfetti from "./components/Confetti.js";
+import { BiPlayCircle } from "react-icons/bi";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -9,6 +10,10 @@ function App() {
   const [matchedPairs, setMatchedPairs] = useState([]);
   const [firstSelection, setFirstSelection] = useState(null);
   const [secondSelection, setSecondSelection] = useState(null);
+  const [moves, setMoves] = useState(0);
+  const [bestScore, setBestScore] = useState(
+    JSON.parse(localStorage.getItem("bestScore")) || 0
+  );
 
   const cardList = [
     {
@@ -19,7 +24,7 @@ function App() {
       flipped: false,
     },
     {
-      cardName: "frend fries",
+      cardName: "french fries",
       src: require(`./assets/french fries.jpg`),
       id: 2,
       matchFound: false,
@@ -116,6 +121,69 @@ function App() {
       matchFound: false,
       flipped: false,
     },
+    {
+      cardName: "shiba_sushi",
+      src: require(`./assets/shiba_sushi.jpg`),
+      id: 16,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "sushi",
+      src: require(`./assets/sushi.jpg`),
+      id: 17,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "tempura",
+      src: require(`./assets/sushi.jpg`),
+      id: 18,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "bento",
+      src: require(`./assets/bento.jpg`),
+      id: 19,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "gyoza",
+      src: require(`./assets/gyoza.jpg`),
+      id: 19,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "burrito",
+      src: require(`./assets/burrito.jpg`),
+      id: 20,
+      matchFound: false,
+      flipped: false,
+    },
+        {
+      cardName: "sushi2",
+      src: require(`./assets/sushi2.jpg`),
+      id: 20,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "chips_salsa",
+      src: require(`./assets/chips_salsa.jpg`),
+      id: 21,
+      matchFound: false,
+      flipped: false,
+    },
+    {
+      cardName: "taco",
+      src: require(`./assets/taco.jpg`),
+      id: 22,
+      matchFound: false,
+      flipped: false,
+    },
   ];
 
   //shuffle the selected cards and create pairs
@@ -125,19 +193,18 @@ function App() {
     // Double the cards to create pairs
     const cardPairs = selectedCards.concat(selectedCards);
 
-      let i = 0;
-      const updatedCardPairs = cardPairs.map((card) => ({
-        ...card,
-        id: i+=1
-      }))
+    let i = 0;
+    const updatedCardPairs = cardPairs.map((card) => ({
+      ...card,
+      id: (i += 1),
+    }));
 
     // Shuffle the pairs
     const shuffledPairs = shuffleArray(updatedCardPairs);
 
     setCards(shuffledPairs);
-    console.log(cards);
   };
-console.log(cards);
+  console.log(cards);
   //randomly picking number of cards out of the deck
   const getRandomCards = (array, count) => {
     const shuffledArray = shuffleArray(array);
@@ -157,61 +224,73 @@ console.log(cards);
   };
 
   const checkIsFlipped = (index) => {
-    return index === firstSelection || 
-    index === secondSelection || 
-    openCards.includes(cards[index]) ||
-    cards[index].matchFound;
+    return (
+      index === firstSelection ||
+      index === secondSelection ||
+      openCards.includes(cards[index]) ||
+      cards[index].matchFound
+    );
   };
 
   const handleCardSlection = (index) => {
-    if (firstSelection === null && openCards.length===0) {
+    if (firstSelection === null && openCards.length === 0) {
       setFirstSelection(index);
-      setOpenCards(([index]))
+      setOpenCards([index]);
     } else if (secondSelection === null && !openCards.includes(index)) {
+      setMoves((moves) => moves + 1);
       setSecondSelection(index);
-      setOpenCards((prevArray)=>[...prevArray,index]);
-    };
+      setOpenCards((prevArray) => [...prevArray, index]);
+    }
   };
 
- const resetCards =()=>{
-  setOpenCards([]);
-  setFirstSelection(null);
-  setSecondSelection(null);
- };
+  const resetCards = () => {
+    setOpenCards([]);
+    setFirstSelection(null);
+    setSecondSelection(null);
+  };
 
- const markCardsAsMatched = (firstSelection, secondSelection) => {
-  setCards((prevCards) =>
-    prevCards.map((card, index) => {
-      if (index === firstSelection || index === secondSelection) {
-        return { ...card, matchFound: true };
-      }
-      return card;
-    })
-  );
-};
+  const markCardsAsMatched = (firstSelection, secondSelection) => {
+    setCards((prevCards) =>
+      prevCards.map((card, index) => {
+        if (index === firstSelection || index === secondSelection) {
+          return { ...card, matchFound: true };
+        }
+        return card;
+      })
+    );
+  };
 
-  const matchingProcess =() => {
+  const matchingProcess = () => {
+    if (!firstSelection && !secondSelection){
+      return;
+    }
     setOpenCards([firstSelection, secondSelection]);
-
-    if (cards[firstSelection].cardName === cards[secondSelection].cardName && !matchedPairs.includes(cards[firstSelection].cardName)) {
-      console.log("we got a match!");
-      setMatchedPairs((prev) => ([...prev,cards[firstSelection].cardName]));
-      markCardsAsMatched(firstSelection,secondSelection);
+    console.log("firstSelection",firstSelection);
+    console.log("secondSelection",secondSelection);
+    if (
+      cards[firstSelection].cardName === cards[secondSelection].cardName &&
+      !matchedPairs.includes(cards[firstSelection])
+    ) {
+      setMatchedPairs((prev) => [...prev, cards[firstSelection]]);
+      markCardsAsMatched(firstSelection, secondSelection);
       resetCards();
     } else {
       // setOpenCards([]);
       // setFirstSelection(null);
       // setSecondSelection(null);
-      setTimeout(()=>resetCards(),500);
+      setTimeout(() => resetCards(), 500);
     }
   };
 console.log(matchedPairs);
 
-  const checkCompletion =() => {
-    console.log("length of matched pairs",Object.keys(matchedPairs).length);
-    console.log("length of cards",cards.length/2);
-    if (matchedPairs.length === cards.length/2 && Object.keys(matchedPairs).length  !==0) {
-      console.log("congrats!!!");
+  const checkCompletion = () => {
+    if (
+      matchedPairs.length === cards.length / 2 &&
+      Object.keys(matchedPairs).length !== 0
+    ) {
+      const highScore = Math.min(moves, bestScore);
+      setBestScore(highScore);
+      localStorage.setItem("bestScore", highScore);
       launchConfetti();
     }
   };
@@ -219,14 +298,15 @@ console.log(matchedPairs);
   const handlenewGameClick = () => {
     resetCards();
     setMatchedPairs([]);
-    shuffleCards();   
+    shuffleCards();
+    setMoves(0);
   };
 
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
       // timeout = setTimeout(matchingPairs, 1000);
-      timeout = setTimeout(matchingProcess, 1000);
+      timeout = setTimeout(matchingProcess, 800);
     }
     return () => {
       clearTimeout(timeout);
@@ -242,22 +322,16 @@ console.log(matchedPairs);
   useEffect(() => {
     checkCompletion();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[matchedPairs]);
+  }, [matchedPairs]);
 
   return (
     <div className="App">
       <header>
-        <h2>Hello World! Welcome to Memory Game</h2>
-        <p>
-          On the game board, there are always two identical cards. <br />
-          When finding the matching pair, the cards will disappear, and you will
-          gain a point!
-        </p>
+        <h1>Welcome to Memory Game</h1>
+        <h2>
+          Cute Food Edition 
+        </h2> 
       </header>
-      <button className="NewGame" onClick={handlenewGameClick}>
-        {" "}
-        New Game
-      </button>
       <div className="game-board">
         {cards.map((card, index) => (
           <Card
@@ -271,7 +345,22 @@ console.log(matchedPairs);
           />
         ))}
       </div>
-      <h3>Match found:</h3>
+      <footer>
+        <div className="scores">
+          <span className="matches">Match found:{matchedPairs.length}</span>
+          <span className="moves">Total Moves:{moves}</span>
+          <span>Best Score:</span> {bestScore && (
+            <div className="highest-score">
+               {bestScore}
+            </div>
+          )}
+          <div>       
+          <button className="new-game-button" onClick={handlenewGameClick}>    
+        New Game
+        <BiPlayCircle size={20}/>
+      </button></div>
+        </div>
+      </footer>
     </div>
   );
 }
