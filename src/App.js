@@ -3,12 +3,11 @@ import Card from "./components/Card.js";
 import React, { useState, useEffect } from "react";
 import launchConfetti from "./components/Confetti.js";
 import { BiPlayCircle } from "react-icons/bi";
-import {BsSuitHeartFill} from "react-icons/bs";
-import {BsGithub} from "react-icons/bs";
-import {SiFreepik} from "react-icons/si";
-import {FaReact} from "react-icons/fa";
-import {SiNetlify} from "react-icons/si";
-
+import { BsSuitHeartFill } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs";
+import { SiFreepik } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
+import { SiNetlify } from "react-icons/si";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -20,6 +19,8 @@ function App() {
   const [bestScore, setBestScore] = useState(
     JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY
   );
+  //allow user to continue clicking
+  const [enable, setEnable] = useState(false);
 
   const cardList = [
     {
@@ -151,19 +152,19 @@ function App() {
     {
       cardName: "sushi2",
       src: require(`./assets/sushi2.jpg`),
-      id: 20,
+      id: 21,
       matchFound: false,
     },
     {
       cardName: "chips_salsa",
       src: require(`./assets/chips_salsa.jpg`),
-      id: 21,
+      id: 22,
       matchFound: false,
     },
     {
       cardName: "taco",
       src: require(`./assets/taco.jpg`),
-      id: 22,
+      id: 23,
       matchFound: false,
     },
   ];
@@ -185,6 +186,7 @@ function App() {
     const shuffledPairs = shuffleArray(updatedCardPairs);
 
     setCards(shuffledPairs);
+    setEnable(true);
   };
   console.log(cards);
   //randomly picking number of cards out of the deck
@@ -215,6 +217,10 @@ function App() {
   };
 
   const handleCardSlection = (index) => {
+    if (enable === false) {
+      return;
+    }
+
     if (firstSelection === null && openCards.length === 0) {
       setFirstSelection(index);
       setOpenCards([index]);
@@ -270,12 +276,11 @@ function App() {
       console.log(highScore);
       setBestScore(highScore);
       localStorage.setItem("bestScore", highScore);
-      console.log(localStorage.getItem("bestScore"))
+      console.log(localStorage.getItem("bestScore"));
       launchConfetti();
+      setEnable(false);
     }
   };
-
-  console.log(localStorage.getItem("bestScore"))
 
   const handlenewGameClick = () => {
     resetCards();
@@ -309,30 +314,31 @@ function App() {
     <div className="App">
       <header className="welcome">
         {/* <h1 className="welcome"> */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            height="100"
-            viewBox="0 0 600 100"
-            textAnchor="middle"
-            alignmentBaseline="middle"
-            // className="svgTitle"
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          height="100"
+          viewBox="0 0 600 100"
+          textAnchor="middle"
+          alignmentBaseline="middle"
+          // className="svgTitle"
+        >
+          <text
+            className="svgText"
+            x="50%"
+            y="50%"
+            fontSize="3.5vw"
+            fontWeight="bold"
+            fill="white"
           >
-            <text
-              className="svgText"
-              x="50%"
-              y="50%"
-              fontSize="3.5vw"
-              fontWeight="bold"
-              fill="white"
-            >
-              NomNom Matchup!
-            </text>
-          </svg>
+            NomNom Matchup!
+          </text>
+        </svg>
         {/* </h1> */}
       </header>
-      <div className="tech-stack">Powered by {" "}
-      <FaReact /> React, <SiNetlify /> Netlify, <BsGithub /> Github, & <SiFreepik /> Freepik
+      <div className="tech-stack">
+        Powered by <FaReact /> React, <SiNetlify /> Netlify, <BsGithub />{" "}
+        Github, & <SiFreepik /> Freepik
       </div>
       <div className="game-board">
         {cards.map((card, index) => (
@@ -362,12 +368,23 @@ function App() {
           </button>
         </div>
       </footer>
-      <div className="reference">Made with <BsSuitHeartFill size={14}/> by
-        {" "}
-        <a className="minh" href="https://goldenkairos.github.io/personal_page/index.html"> ProgramMinh</a>
-        {" "}
-        <a className="github" href="https://github.com/goldenkairos/memory-game-react-app"> <BsGithub size={16}/></a>
-        </div>
+      <div className="reference">
+        Made with <BsSuitHeartFill size={14} /> by{" "}
+        <a
+          className="minh"
+          href="https://goldenkairos.github.io/personal_page/index.html"
+        >
+          {" "}
+          ProgramMinh
+        </a>{" "}
+        <a
+          className="github"
+          href="https://github.com/goldenkairos/memory-game-react-app"
+        >
+          {" "}
+          <BsGithub size={16} />
+        </a>
+      </div>
     </div>
   );
 }
