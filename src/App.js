@@ -326,7 +326,7 @@ function App() {
               fontWeight="bold"
               fill="white"
             >
-              NomNom Matchup
+              NomNom Matchup!
             </text>
           </svg>
         {/* </h1> */}
