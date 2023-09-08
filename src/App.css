@@ -41,7 +41,9 @@ html {
   height: 70px;
   fill: white;
 }*/
-
+.tech-stack {
+  margin-bottom: 20px;
+}
 
 .svgText {
   fill: rgba(228,51,113,255);
@@ -94,16 +96,9 @@ html {
   color: rgba(80,76,169,255);
 }
 
-/* .moves, matches {
-  font-weight: 600;
-  text-transform: uppercase;
-  
-} */
 
 .matches {
-  /* font-weight: 600; */
   text-transform: uppercase;
-  /* padding-right: 30px; */
   margin-right: 20px; /* Add right margin to create spacing */
 }
 
@@ -123,11 +118,17 @@ html {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 10px; /* Add top margin for spacing */
+  margin-top: 20px; /* Add top margin for spacing */
 }
+
 .github:hover , .minh:hover{
   cursor: pointer;
   color: rgba(43,196,138,255);
+}
+
+.reference {
+  margin-top: auto; /* Pushes this container to the bottom */
+  font-size: 18px;
 }
 
 @media screen and (max-width: 768px) {
@@ -141,14 +142,16 @@ html {
 
   .game-board {
     width: 90%; /* Adjust the width as needed */
-    max-width: 500px; /* Set a maximum width for the game board */
+    max-width: 400px; /* Set a maximum width for the game board */
     aspect-ratio: 1/1; /* Maintain a square aspect ratio */
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
     gap: 5px; /* Adjust the gap between cards as needed */
     padding:10px;
     border: 2px solid #502fe7;
-    margin-top: -40px;
+    margin-top: -10px;
+    /* padding-top: 90%; */
+    height: calc(85% / 2); /* Adjust the percentage as needed for your layout */
   }
 
     .scores {
@@ -159,8 +162,8 @@ html {
       flex-wrap: nowrap; /* Ensure the scores stay in one line */
       font-size:smaller;
     }
-    .welcome {
-      font-size:25px;
+.welcome {
+    font-size:25px;
     }
 
   .svgText {

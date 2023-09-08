@@ -5,6 +5,10 @@ import launchConfetti from "./components/Confetti.js";
 import { BiPlayCircle } from "react-icons/bi";
 import {BsSuitHeartFill} from "react-icons/bs";
 import {BsGithub} from "react-icons/bs";
+import {SiFreepik} from "react-icons/si";
+import {FaReact} from "react-icons/fa";
+import {BiLogoNetlify} from "react-icons/bi";
+
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -303,8 +307,8 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1 className="welcome">
+      <header className="welcome">
+        {/* <h1 className="welcome"> */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
@@ -325,8 +329,11 @@ function App() {
               NomNom Matchup
             </text>
           </svg>
-        </h1>
+        {/* </h1> */}
       </header>
+      <div className="tech-stack">Powered by {" "}
+      <FaReact /> React, <BiLogoNetlify /> Netlify, <BsGithub /> Github, & <SiFreepik /> Freepik
+      </div>
       <div className="game-board">
         {cards.map((card, index) => (
           <Card
@@ -354,13 +361,13 @@ function App() {
             <BiPlayCircle size={30} />
           </button>
         </div>
-        <div>Made with <BsSuitHeartFill size={14}/> by
+      </footer>
+      <div className="reference">Made with <BsSuitHeartFill size={14}/> by
         {" "}
         <a className="minh" href="https://goldenkairos.github.io/personal_page/index.html"> ProgramMinh</a>
         {" "}
         <a className="github" href="https://github.com/goldenkairos/memory-game-react-app"> <BsGithub size={16}/></a>
         </div>
-      </footer>
     </div>
   );
 }
