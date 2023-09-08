@@ -12,7 +12,7 @@ function App() {
   const [secondSelection, setSecondSelection] = useState(null);
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState(
-    JSON.parse(localStorage.getItem("bestScore")) || 0
+    JSON.parse(localStorage.getItem("bestScore")) || Number.POSITIVE_INFINITY
   );
 
   const cardList = [
@@ -265,8 +265,6 @@ function App() {
       return;
     }
     setOpenCards([firstSelection, secondSelection]);
-    console.log("firstSelection", firstSelection);
-    console.log("secondSelection", secondSelection);
     if (
       cards[firstSelection].cardName === cards[secondSelection].cardName &&
       !matchedPairs.includes(cards[firstSelection])
@@ -275,9 +273,6 @@ function App() {
       markCardsAsMatched(firstSelection, secondSelection);
       resetCards();
     } else {
-      // setOpenCards([]);
-      // setFirstSelection(null);
-      // setSecondSelection(null);
       setTimeout(() => resetCards(), 500);
     }
   };
@@ -289,11 +284,15 @@ function App() {
       Object.keys(matchedPairs).length !== 0
     ) {
       const highScore = Math.min(moves, bestScore);
+      console.log(highScore);
       setBestScore(highScore);
       localStorage.setItem("bestScore", highScore);
+      console.log(localStorage.getItem("bestScore"))
       launchConfetti();
     }
   };
+
+  console.log(localStorage.getItem("bestScore"))
 
   const handlenewGameClick = () => {
     resetCards();
@@ -305,7 +304,6 @@ function App() {
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
-      // timeout = setTimeout(matchingPairs, 1000);
       timeout = setTimeout(matchingProcess, 800);
     }
     return () => {
@@ -333,7 +331,7 @@ function App() {
             width="100%"
             height="100"
             viewBox="0 0 600 100"
-            textAnchor="middle" 
+            textAnchor="middle"
             alignmentBaseline="middle"
             // className="svgTitle"
           >
@@ -341,8 +339,8 @@ function App() {
               className="svgText"
               x="50%"
               y="50%"
-              font-size="4vw"
-              font-weight="bold"
+              fontSize="4vw"
+              fontWeight="bold"
               fill="white"
             >
               NomNom Matchup
@@ -368,12 +366,12 @@ function App() {
           <span className="matches">Match found: {matchedPairs.length}</span>
           <span className="moves">Total Moves: {moves}</span>
           <span className="highest-score">
-            Best Score: {bestScore && { bestScore }}
+            Best Score: {localStorage.getItem("bestScore")}
           </span>
         </div>
         <div>
           <button className="new-game-button" onClick={handlenewGameClick}>
-            New Game
+            <span className="button-text">New Game</span>
             <BiPlayCircle size={30} />
           </button>
         </div>

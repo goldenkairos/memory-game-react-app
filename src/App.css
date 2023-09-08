@@ -7,12 +7,15 @@ html {
   display: flex;
   flex-direction: column;
   /* place-items: center; */
-  /* background-color: rgb(234, 205, 255); */
+  background-color: rgb(234, 205, 255);
   /* position: absolute; */
   font-family:Nunito,Arial,"Helvetica Neue",Helvetica,sans-serif ;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  /* background: url('./assets/background.jpg');
+  background-position: center center cover no-repeat fixed;
+  background-size: cover; */
 }
 
 .game-board {
@@ -70,6 +73,14 @@ html {
   border: transparent;
   font-family: 'Nunito', sans-serif;
   margin-bottom: 20px; /* Add bottom margin for spacing */
+  position: relative;
+}
+
+.new-game-button:hover {
+  border: 0px solid #1292e1;
+  background: green;
+  color: white !important;
+  
 }
 
 .scores {
