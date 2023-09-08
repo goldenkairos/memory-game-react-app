@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import launchConfetti from "./components/Confetti.js";
 import { BiPlayCircle } from "react-icons/bi";
 import {BsSuitHeartFill} from "react-icons/bs";
+import {BsGithub} from "react-icons/bs";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -353,10 +354,11 @@ function App() {
             <BiPlayCircle size={30} />
           </button>
         </div>
-        <div>Made with <BsSuitHeartFill size={10}/> by
-        <a className="Minh" href="https://github.com/goldenkairos/memory-game-react-app"> CodeMinh</a>
-        {" "}|| {" "} 
-        <a className="Minh" href="https://github.com/goldenkairos/memory-game-react-app"> Source Code</a>
+        <div>Made with <BsSuitHeartFill size={14}/> by
+        {" "}
+        <a className="minh" href="https://goldenkairos.github.io/personal_page/index.html"> ProgramMinh</a>
+        {" "}
+        <a className="github" href="https://github.com/goldenkairos/memory-game-react-app"> <BsGithub size={16}/></a>
         </div>
       </footer>
     </div>

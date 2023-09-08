@@ -125,8 +125,10 @@ html {
   align-items: flex-start;
   margin-top: 10px; /* Add top margin for spacing */
 }
-
-
+.github:hover , .minh:hover{
+  cursor: pointer;
+  color: rgba(43,196,138,255);
+}
 
 @media screen and (max-width: 768px) {
   .App {
