@@ -146,9 +146,9 @@ html {
     gap: 5px; /* Adjust the gap between cards as needed */
     padding:10px;
     border: 2px solid #502fe7;
+    margin-top: -40px;
   }
 
-  
     .scores {
       margin:15px;
       display: flex;
@@ -162,6 +162,23 @@ html {
     }
 
   .svgText {
-    font-size: 50px; /* Set a minimum font size for smaller screens */
+    font-size: 60px; /* Set a minimum font size for smaller screens */
   }
+  
+  .svg {
+    margin-bottom: 0px;
+    height:50px;
+  }
+
+  .new-game-button {
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transform: perspective(1px) translateZ(0px);
+    background-color: rgba(43,196,138,255);
+    padding: 5px 8px;
+    margin-bottom: 15px; 
+
+  }
+
   }

@@ -3,6 +3,7 @@ import Card from "./components/Card.js";
 import React, { useState, useEffect } from "react";
 import launchConfetti from "./components/Confetti.js";
 import { BiPlayCircle } from "react-icons/bi";
+import {BsSuitHeartFill} from "react-icons/bs";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -21,168 +22,144 @@ function App() {
       src: require(`./assets/burger.jpg`),
       id: 1,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "french fries",
       src: require(`./assets/french fries.jpg`),
       id: 2,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "hotdog",
       src: require(`./assets/hotdog.jpg`),
       id: 3,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "ice cream",
       src: require(`./assets/ice_cream.jpg`),
       id: 4,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "pancakes",
       src: require(`./assets/pancakes.jpg`),
       id: 5,
       matchFound: false,
-      flipped: false,
     },
     {
       card: "veggies",
       src: require(`./assets/veggies.jpg`),
       id: 6,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "pizza",
       src: require(`./assets/pizza.jpg`),
       id: 7,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "ramen",
       src: require(`./assets/ramen.jpg`),
       id: 8,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "takoyaki",
       src: require(`./assets/takoyaki.jpg`),
       id: 9,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "onigiri",
       src: require(`./assets/onigiri.jpg`),
       id: 10,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "smores",
       src: require(`./assets/smores.jpg`),
       id: 11,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "breakfast",
       src: require(`./assets/breakfast.jpg`),
       id: 12,
       matchFound: false,
-      flipped: false,
     },
     {
       card: "boba",
       src: require(`./assets/boba.jpg`),
       id: 13,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "donut",
       src: require(`./assets/donut.jpg`),
       id: 14,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "coffee_toast",
       src: require(`./assets/coffee_toast.jpg`),
       id: 15,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "shiba_sushi",
       src: require(`./assets/shiba_sushi.jpg`),
       id: 16,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "sushi",
       src: require(`./assets/sushi.jpg`),
       id: 17,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "tempura",
       src: require(`./assets/sushi.jpg`),
       id: 18,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "bento",
       src: require(`./assets/bento.jpg`),
       id: 19,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "gyoza",
       src: require(`./assets/gyoza.jpg`),
       id: 19,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "burrito",
       src: require(`./assets/burrito.jpg`),
       id: 20,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "sushi2",
       src: require(`./assets/sushi2.jpg`),
       id: 20,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "chips_salsa",
       src: require(`./assets/chips_salsa.jpg`),
       id: 21,
       matchFound: false,
-      flipped: false,
     },
     {
       cardName: "taco",
       src: require(`./assets/taco.jpg`),
       id: 22,
       matchFound: false,
-      flipped: false,
     },
   ];
 
@@ -249,6 +226,7 @@ function App() {
     setSecondSelection(null);
   };
 
+  //Update card.matchFound when a pair is found
   const markCardsAsMatched = (firstSelection, secondSelection) => {
     setCards((prevCards) =>
       prevCards.map((card, index) => {
@@ -304,7 +282,7 @@ function App() {
   useEffect(() => {
     let timeout = null;
     if (openCards.length === 2) {
-      timeout = setTimeout(matchingProcess, 800);
+      timeout = setTimeout(matchingProcess, 600);
     }
     return () => {
       clearTimeout(timeout);
@@ -339,7 +317,7 @@ function App() {
               className="svgText"
               x="50%"
               y="50%"
-              fontSize="4vw"
+              fontSize="3.8vw"
               fontWeight="bold"
               fill="white"
             >
@@ -374,6 +352,11 @@ function App() {
             <span className="button-text">New Game</span>
             <BiPlayCircle size={30} />
           </button>
+        </div>
+        <div>Made with <BsSuitHeartFill size={10}/> by
+        <a className="Minh" href="https://github.com/goldenkairos/memory-game-react-app"> CodeMinh</a>
+        {" "}|| {" "} 
+        <a className="Minh" href="https://github.com/goldenkairos/memory-game-react-app"> Source Code</a>
         </div>
       </footer>
     </div>
