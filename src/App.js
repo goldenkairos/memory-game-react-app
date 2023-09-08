@@ -7,7 +7,7 @@ import {BsSuitHeartFill} from "react-icons/bs";
 import {BsGithub} from "react-icons/bs";
 import {SiFreepik} from "react-icons/si";
 import {FaReact} from "react-icons/fa";
-import {BiLogoNetlify} from "react-icons/bi";
+import {SiNetlify} from "react-icons/si";
 
 
 function App() {
@@ -332,7 +332,7 @@ function App() {
         {/* </h1> */}
       </header>
       <div className="tech-stack">Powered by {" "}
-      <FaReact /> React, <BiLogoNetlify /> Netlify, <BsGithub /> Github, & <SiFreepik /> Freepik
+      <FaReact /> React, <SiNetlify /> Netlify, <BsGithub /> Github, & <SiFreepik /> Freepik
       </div>
       <div className="game-board">
         {cards.map((card, index) => (

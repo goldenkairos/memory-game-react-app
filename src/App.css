@@ -1,5 +1,5 @@
 html {
-  background-color: rgba(247,210,241,255);
+  background-color: rgba(255,128,129,255);
 }
 
 .App {
@@ -7,7 +7,7 @@ html {
   display: flex;
   flex-direction: column;
   /* place-items: center; */
-  background-color: rgb(234, 205, 255);
+  background-color: rgba(255,209,235,255);
   /* position: absolute; */
   font-family:Nunito,Arial,"Helvetica Neue",Helvetica,sans-serif ;
   justify-content: center;
@@ -20,7 +20,7 @@ html {
 
 .game-board {
   display: grid;
-  border: 1px solid #502fe7;
+  border: 1px solid #8775da;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-column-gap: 1rem;
@@ -30,10 +30,12 @@ html {
   padding: 2rem;
   width: 500px;
   height:500px;
-  background-color: rgb(230, 255, 244);
+  background-color: #f6f6f8;
   border-radius: 10px;
   align-items: stretch;
+  box-shadow: rgba(141, 123, 240, 0.15) 0px 48px 100px 0px;
 }
+
 /* svg {
   font-size: 40px;
   font-weight: bold;
@@ -186,13 +188,13 @@ html {
     transform: perspective(1px) translateZ(0px);
     background-color: rgba(43,196,138,255);
     padding: 5px 8px;
-    margin-bottom: 15px; 
+    margin-bottom: -10px; 
 
   }
 
   .reference-div {
     position: fixed;
-    bottom: 5px; /* Adjust this value to control the vertical position */
+    bottom: -20px; /* Adjust this value to control the vertical position */
     right: 20px; /* Adjust this value to control the horizontal position */
     /* Add other styling properties as needed */
   }
