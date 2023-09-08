@@ -322,7 +322,7 @@ function App() {
               className="svgText"
               x="50%"
               y="50%"
-              fontSize="3.8vw"
+              fontSize="3.5vw"
               fontWeight="bold"
               fill="white"
             >
