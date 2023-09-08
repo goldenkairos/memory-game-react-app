@@ -170,7 +170,7 @@ html {
     }
 .welcome {
     font-size:25px;
-    margin-top: -10px;
+    margin-top: -30px;
     }
 
   .svgText {
@@ -180,6 +180,7 @@ html {
   .svg {
     margin-bottom: 0px;
     height:50px;
+
   }
 
   .new-game-button {
