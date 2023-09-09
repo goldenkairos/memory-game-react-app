@@ -340,7 +340,7 @@ function App() {
         Powered by <a className="icon"
           href="https://react.dev/"><FaReact /></a> React,{" "}
         <a className="icon" href="https://react.dev/"><SiNetlify size={"16"}/></a> Netlify,{" "} 
-        <a className="icon" href="https://github.com/"><BsGithub /></a> Github, & {" "}
+        <a className="icon" href="https://github.com/"><BsGithub /></a> Github & {" "}
         <a className="icon" href="https://www.freepik.com/"><SiFreepik /></a> Freepik
       </div>
       <div className="game-board">
