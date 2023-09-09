@@ -337,8 +337,11 @@ function App() {
         {/* </h1> */}
       </header>
       <div className="tech-stack">
-        Powered by <FaReact /> React, <SiNetlify /> Netlify, <BsGithub />{" "}
-        Github, & <SiFreepik /> Freepik
+        Powered by <a className="icon"
+          href="https://react.dev/"><FaReact /></a> React,{" "}
+        <a className="icon" href="https://react.dev/"><SiNetlify size={"16"}/></a> Netlify,{" "} 
+        <a className="icon" href="https://github.com/"><BsGithub /></a> Github, & {" "}
+        <a className="icon" href="https://www.freepik.com/"><SiFreepik /></a> Freepik
       </div>
       <div className="game-board">
         {cards.map((card, index) => (
@@ -378,7 +381,7 @@ function App() {
           ProgramMinh
         </a>{" "}
         <a
-          className="github"
+          className="icon"
           href="https://github.com/goldenkairos/memory-game-react-app"
         >
           {" "}

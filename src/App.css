@@ -1,7 +1,8 @@
 html, body {
-  background-color: rgba(255,209,235,255);
+  background-color: rgba(255,255,255,255);
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
+  color: #4a343b;
 }
 
 .App {
@@ -9,7 +10,7 @@ html, body {
   display: flex;
   flex-direction: column;
   /* place-items: center; */
-  background-color: rgba(255,209,235,255);
+  background-color: rgba(255,255,255,255);
   /* position: absolute; */
   font-family:Nunito,Arial,"Helvetica Neue",Helvetica,sans-serif ;
   justify-content: center;
@@ -22,20 +23,23 @@ html, body {
 
 .game-board {
   display: grid;
-  border: 1px solid #8775da;
+  /* border: 1px solid #8775da; */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: .7rem;
+  grid-row-gap: .7rem;
   justify-content: center;
   margin-top: -10px;
-  padding: 2rem;
-  width: 500px;
-  height:500px;
-  background-color: #f6f6f8;
+  padding: 1rem;
+  width: 550px;
+  height:550px;
+  /* background-color: #f6f6f8; */
   border-radius: 10px;
   align-items: stretch;
-  box-shadow: rgba(141, 123, 240, 0.15) 0px 48px 100px 0px;
+  /* box-shadow: rgba(208, 84, 225, 0.15) 100px 100px 100px 100px; */
+  /* box-shadow: rgb(235, 172, 194)  0px 7px 29px 0px; */
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  */
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 /* svg {
@@ -47,12 +51,13 @@ html, body {
 }*/
 .tech-stack {
   margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .svgText {
   fill: rgba(228,51,113,255);
-  stroke: rgb(255, 255, 255);
-  stroke-width: 15px;
+  stroke: rgb(255, 217, 217);
+  stroke-width: 16px;
   stroke-linejoin: round;
   paint-order: stroke;
   font-weight: 1000;
@@ -125,7 +130,7 @@ html, body {
   margin-top: 20px; /* Add top margin for spacing */
 }
 
-.github:hover , .minh:hover{
+.icon:hover , .minh:hover{
   cursor: pointer;
   color: rgba(43,196,138,255);
 }
