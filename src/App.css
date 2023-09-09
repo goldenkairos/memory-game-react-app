@@ -159,12 +159,13 @@ html, body {
     aspect-ratio: 1/1; /* Maintain a square aspect ratio */
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-    gap: 5px; /* Adjust the gap between cards as needed */
-    padding:10px;
-    border: 2px solid #502fe7;
+    gap: 8px; /* Adjust the gap between cards as needed */
+    padding:11px;
+    /* border: 2px solid #502fe7; */
     margin-top: -10px;
     /* padding-top: 90%; */
     height: calc(85% / 2); /* Adjust the percentage as needed for your layout */
+    box-shadow:none;
   }
 
     .scores {
