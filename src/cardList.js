@@ -144,4 +144,58 @@ export const cardList = [
     id: 23,
     matchFound: false,
   },
+  {
+    cardName: "cake",
+    src: require(`./assets/cake.jpg`),
+    id: 24,
+    matchFound: false,
+  },
+  {
+    cardName: "dango",
+    src: require(`./assets/dango.jpg`),
+    id: 25,
+    matchFound: false,
+  },
+  {
+    cardName: "milk-cookies",
+    src: require(`./assets/milk-cookies.jpg`),
+    id: 26,
+    matchFound: false,
+  },
+  {
+    cardName: "pineapple",
+    src: require(`./assets/pineapple.jpg`),
+    id: 27,
+    matchFound: false,
+  },
+  {
+    cardName: "fruit",
+    src: require(`./assets/fruit.jpg`),
+    id: 28,
+    matchFound: false,
+  },
+  {
+    cardName: "burger2",
+    src: require(`./assets/burger2.jpg`),
+    id: 29,
+    matchFound: false,
+  },
+  {
+    cardName: "super-sausage",
+    src: require(`./assets/super-sausage.jpg`),
+    id: 30,
+    matchFound: false,
+  },
+  {
+    cardName: "happy-meal",
+    src: require(`./assets/happy-meal.jpg`),
+    id: 31,
+    matchFound: false,
+  },
+  {
+    cardName: "cotton-candy",
+    src: require(`./assets/cotton-candy.jpg`),
+    id: 32,
+    matchFound: false,
+  },
 ];

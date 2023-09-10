@@ -71,3 +71,33 @@ img src=salsa.jpg
 
 img src=taco.jpg
 <a href="https://www.freepik.com/free-vector/cute-puppy-with-tacos-vector-illustration_18166187.htm#query=chibi%20taco&position=8&from_view=search&track=ais">Image by maniacvector</a> on Freepik
+
+img src=cake.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-kawaii-food-collection_26386726.htm#&position=5&from_view=collections">Freepik</a>
+
+img src=dango.jpg
+Image by <a href="https://www.freepik.com/free-vector/hand-drawn-kawaii-illustration_28203951.htm#query=chibi%20food&position=48&from_view=search&track=ais">Freepik</a>
+
+img src=happy-meal.jpg
+<a href="https://www.freepik.com/free-vector/french-fries-soda-hot-dog-kawaii-fast-food-illustration_5769173.htm#query=chibi%20hot%20dog&position=13&from_view=search&track=ais">Image by gstudioimagen</a> on Freepik
+
+img src=super-sausage.jpg
+<a href="https://www.freepik.com/free-vector/cute-sausage-super-hero-cartoon-vector-icon-illustration-food-character-icon-concept-isolated-premium-vector-flat-cartoon-style_20830248.htm#query=chibi%20hot%20dog&position=20&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=burger2.jpg
+<a href="https://www.freepik.com/free-vector/cute-burger-holding-french-fries-cartoon-vector-icon-illustration-food-object-icon-concept-isolated_33489312.htm#query=chibi%20hot%20dog&position=32&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=fruit.jpg
+<a href="https://www.freepik.com/free-vector/cute-burger-holding-french-fries-cartoon-vector-icon-illustration-food-object-icon-concept-isolated_33489312.htm#query=chibi%20hot%20dog&position=32&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=pineapple.jpg
+<a href="https://www.freepik.com/free-vector/cute-burger-holding-french-fries-cartoon-vector-icon-illustration-food-object-icon-concept-isolated_33489312.htm#query=chibi%20hot%20dog&position=32&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=milk-cookies.jpg
+<a href="https://www.freepik.com/free-vector/cute-cookies-with-milk-cartoon-vector-icon-illustration-food-drink-icon-concept-isolated_23689202.htm#query=chibi%20cookies&position=48&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=candy2.jpg
+<a href="https://www.freepik.com/free-vector/cute-cookies-with-milk-cartoon-vector-icon-illustration-food-drink-icon-concept-isolated_23689202.htm#query=chibi%20cookies&position=48&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
+
+img src=cotton-candy.jpg
+<a href="https://www.freepik.com/free-vector/cute-cookies-with-milk-cartoon-vector-icon-illustration-food-drink-icon-concept-isolated_23689202.htm#query=chibi%20cookies&position=48&from_view=search&track=ais">Image by catalyststuff</a> on Freepik
