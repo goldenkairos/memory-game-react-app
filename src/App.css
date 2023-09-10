@@ -31,8 +31,8 @@ html, body {
   justify-content: center;
   margin-top: -10px;
   padding: 1rem;
-  width: 650px;
-  height:650px;
+  width: 550px;
+  height:550px;
   /* background-color: #f6f6f8; */
   border-radius: 10px;
   align-items: stretch;
@@ -224,4 +224,79 @@ html, body {
   }
 
 
+/* @media screen and (min-width: 300px) and (max-width: 1064px)  */
+@media screen and (max-width: 768px) 
+{
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
 
+  .tech-stack, .reference {
+    font-size: 15px;
+  }
+
+  .game-board {
+    width: 95%; /* Adjust the width as needed */
+    max-width: 400px; /* Set a maximum width for the game board */
+    aspect-ratio: 1/1; /* Maintain a square aspect ratio */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+    gap: 9px; /* Adjust the gap between cards as needed */
+    padding:11px;
+    /* border: 2px solid #502fe7; */
+    margin-top: -10px;
+    /* padding-top: 90%; */
+    height: calc(90% / 2); /* Adjust the percentage as needed for your layout */
+    box-shadow:none;
+  }
+
+    .scores {
+      margin:15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap; /* Ensure the scores stay in one line */
+      font-size:smaller;
+    }
+.welcome {
+    font-size:25 ;
+    margin-top: -30px;
+    }
+
+  .svgText {
+    font-size: 60px; /* Set a minimum font size for smaller screens */
+  }
+  
+  .svg {
+    margin-bottom: 0px;
+    height:50px;
+
+  }
+
+  .new-game-button {
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    transform: perspective(1px) translateZ(0px);
+    background-color: rgba(43,196,138,255);
+    padding: 5px 8px;
+    margin-bottom: -5px; 
+
+  }
+
+  .reference {
+    margin-top: 60px;
+  }
+
+  .reference-div {
+    position: fixed;
+    bottom: -30px; /* Adjust this value to control the vertical position */
+    right: 20px; /* Adjust this value to control the horizontal position */
+    /* Add other styling properties as needed */
+  }
+
+  }
