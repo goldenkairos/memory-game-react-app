@@ -23,153 +23,6 @@ function App() {
   //allow user to continue clicking
   const [enable, setEnable] = useState(false);
 
-  // const cardList = [
-  //   {
-  //     cardName: "burger",
-  //     src: require(`./assets/burger.jpg`),
-  //     id: 1,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "french fries",
-  //     src: require(`./assets/french fries.jpg`),
-  //     id: 2,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "hotdog",
-  //     src: require(`./assets/hotdog.jpg`),
-  //     id: 3,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "ice cream",
-  //     src: require(`./assets/ice_cream.jpg`),
-  //     id: 4,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "pancakes",
-  //     src: require(`./assets/pancakes.jpg`),
-  //     id: 5,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     card: "veggies",
-  //     src: require(`./assets/veggies.jpg`),
-  //     id: 6,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "pizza",
-  //     src: require(`./assets/pizza.jpg`),
-  //     id: 7,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "ramen",
-  //     src: require(`./assets/ramen.jpg`),
-  //     id: 8,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "takoyaki",
-  //     src: require(`./assets/takoyaki.jpg`),
-  //     id: 9,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "onigiri",
-  //     src: require(`./assets/onigiri.jpg`),
-  //     id: 10,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "smores",
-  //     src: require(`./assets/smores.jpg`),
-  //     id: 11,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "breakfast",
-  //     src: require(`./assets/breakfast.jpg`),
-  //     id: 12,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     card: "boba",
-  //     src: require(`./assets/boba.jpg`),
-  //     id: 13,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "donut",
-  //     src: require(`./assets/donut.jpg`),
-  //     id: 14,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "coffee_toast",
-  //     src: require(`./assets/coffee_toast.jpg`),
-  //     id: 15,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "shiba_sushi",
-  //     src: require(`./assets/shiba_sushi.jpg`),
-  //     id: 16,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "sushi",
-  //     src: require(`./assets/sushi.jpg`),
-  //     id: 17,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "tempura",
-  //     src: require(`./assets/tempura.jpg`),
-  //     id: 18,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "bento",
-  //     src: require(`./assets/bento.jpg`),
-  //     id: 19,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "gyoza",
-  //     src: require(`./assets/gyoza.jpg`),
-  //     id: 19,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "burrito",
-  //     src: require(`./assets/burrito.jpg`),
-  //     id: 20,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "sushi2",
-  //     src: require(`./assets/sushi2.jpg`),
-  //     id: 21,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "chips_salsa",
-  //     src: require(`./assets/chips_salsa.jpg`),
-  //     id: 22,
-  //     matchFound: false,
-  //   },
-  //   {
-  //     cardName: "taco",
-  //     src: require(`./assets/taco.jpg`),
-  //     id: 23,
-  //     matchFound: false,
-  //   },
-  // ];
-
   //shuffle the selected cards and create pairs
   const shuffleCards = () => {
     const selectedCards = getRandomCards(cardList, 8);
@@ -189,7 +42,7 @@ function App() {
     setCards(shuffledPairs);
     setEnable(true);
   };
-console.log("cards",cards);
+// console.log("cards",cards);
   //randomly picking number of cards out of the deck
   const getRandomCards = (array, count) => {
     const shuffledArray = shuffleArray(array);
@@ -273,10 +126,8 @@ console.log("cards",cards);
       Object.keys(matchedPairs).length !== 0
     ) {
       const highScore = Math.min(moves, bestScore);
-      console.log(highScore);
       setBestScore(highScore);
       localStorage.setItem("bestScore", highScore);
-      console.log(localStorage.getItem("bestScore"));
       launchConfetti();
       setEnable(false);
     }
