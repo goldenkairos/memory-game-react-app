@@ -1,4 +1,83 @@
-# Getting Started with Create React App
+# Nomnom Match Up - Memory Game
+
+Welcome to **Nomnom Match Up**, a delightful memory game where you match mouth-watering food items!
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Gameplay](#gameplay)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+**Nomnom Match Up** is a classic memory matching game where you flip cards to find pairs of identical food items. The goal is to match all the pairs to win the game. It's a great way to test and improve your memory while enjoying delicious food images. Once all the cards are matched, a beautiful surprise is await for you at the end. 
+
+This game also keep your own best score. Try to compete with yourself for better score!
+
+## Features
+
+- A variety of food-themed cards to match.
+- Beautifully designed card images.
+- Interactive gameplay with card flipping.
+- New Game button to restart and shuffle the cards.
+- Score tracking for matched pairs.
+
+## Getting Started
+
+To get started with **Nomnom Match Up**, follow these steps:
+
+1. Clone or download this repository to your local machine.
+
+2. Navigate to the project directory using your terminal or command prompt.
+
+3. Install the required dependencies by running: `yarn install`
+
+4. Start the game by running: `yarn start`
+
+5. A tab of the web browser `http://localhost:3000` should start and the game is ready for you to play!
+
+## Gameplay
+
+- Click on a card to flip it over and reveal the food item.
+- Click on a second card to flip it over.
+- If the two cards match, they will stay face up.
+- If they do not match, they will flip back face down.
+- Continue flipping cards and matching pairs until all pairs are found to win the game.
+- Click the "New Game" button to restart the game and shuffle the cards.
+
+## Contributing
+
+Contributions to **Nomnom Match Up** are welcome! If you'd like to contribute new features, bug fixes, or improvements, please follow these steps:
+
+1. Fork the repository to your own GitHub account.
+
+2. Clone your forked repository to your local machine.
+
+3. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`
+
+4. Make your changes and commit them with descriptive commit messages.
+
+5. Push your changes to your GitHub repository: `git push origin feature/your-feature-name`
+
+6. Create a pull request from your forked repository to the original repository.
+
+7. Wait for your pull request to be reviewed and merged.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+
+--------------
+
+## Want to start a React App of your own? Follow the steps below!
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
