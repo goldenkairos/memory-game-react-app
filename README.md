@@ -1,7 +1,8 @@
 # Nomnom Match Up - Memory Game
 
-Welcome to **Nomnom Match Up**, a delightful memory game where you match mouth-watering food items!
+Welcome to **Nomnom MatchUp!** , a delightful memory game where you match mouth-watering food items!
 
+Play Game here: [NomNom MatchUp!](https://nomnom-matchup.netlify.app/)
 ## Table of Contents
 
 - [Introduction](#introduction)
